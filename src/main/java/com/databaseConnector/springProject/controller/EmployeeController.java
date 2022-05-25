@@ -26,33 +26,34 @@ public class EmployeeController
 		return service.saveEmployee(employee);
 	}
 	
-	@PostMapping("/addEmployees") //http://localhost:1999/addEmployees
+	@PostMapping("/addEmployees") 
 	public List<Employee> addEmployees(@RequestBody List<Employee> employees)
 	{
 		return service.saveEmployees(employees);
 	}
 	
-	@GetMapping("/findAllEmployees") //http://localhost:1999/findAllEmployees
+	@GetMapping("/findAllEmployees") 
 	public List<Employee> findAllEmployees()
 	{
 		return service.getEmployees();
 	}
 	
-	@GetMapping("/displayEmployees") //http://localhost:1999/displayEmployees
+	@GetMapping("/displayEmployees") 
 	public List<Employee> displayEmployees() //display all employee based on their name in ascending order
 	{
 		return service.displayEmployees();
 	}
 	
-	@GetMapping("/findEmployeeById/{id}")  //http://localhost:1999/findEmployeeById/102
+	@GetMapping("/findEmployeeById/{id}")  
 	public Employee findEmployeeById(@PathVariable int id)
 	{
 		return service.getEmployeeById(id);
 	}
 	
-	@GetMapping("/updateEmployee/{id}")  //http://localhost:1999/updateEmployee/102
-	public Employee updateEmployee(@PathVariable int id)
+	@PutMapping("/updateEmployee/{id}")  
+	public String updateEmployee(@RequestBody Employee employee)
 	{
-		return service.updateEmployee(id);
+		return service.updateEmployee(employee);
+		
 	}	
 }
