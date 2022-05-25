@@ -40,10 +40,12 @@ public class EmployeeService
 		return repository.findById(id).orElse(null);
 	}
 	
-	public Employee updateEmployee(int id)
-	{
-		Employee existingEmployee = repository.findById(id).orElse(null);
-		existingEmployee.setSalary(existingEmployee.getSalary()+5000);
-		return repository.save(existingEmployee);
+	public String updateEmployee(Employee employee) {
+		Employee existingEmployee = repository.findById(employee.getId()).orElse(null);
+		existingEmployee.setSalary(employee.getSalary());
+		existingEmployee.setName(employee.getName());
+		existingEmployee.setDesignation(employee.getDesignation());
+		repository.save(existingEmployee);
+		return "Record updated successfully";
 	}
 }
